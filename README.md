@@ -5,10 +5,13 @@ A clean, responsive website that helps people understand potential risks in Term
 ## Source and deployment
 
 - Source repository: [Kavya-634/fine-print-decoder](https://github.com/Kavya-634/fine-print-decoder).
-- Vercel project: `fine-print-decoder` in the `kav-5611` scope, using the repository root as the project root.
+- Live website: [fine-print-decoder.vercel.app](https://fine-print-decoder.vercel.app).
+- Vercel dashboard: [kav-5611/fine-print-decoder](https://vercel.com/kav-5611/fine-print-decoder).
+- Vercel project: `fine-print-decoder` in the `kav-5611` scope, using the repository root and Node.js 24.x. The repository is connected to Vercel with **main** as the production branch; pushes to main trigger production builds automatically. This Git-triggered deployment path was verified after setup.
 - The production Vercel Firewall includes a published rule for `POST /api/fetch-policy`: five requests per IP per 60-second fixed window. This supplements, rather than replaces, the per-instance application limits below.
 - Vercel's build command validates unit/server tests and production build/type checks before deployment. Formatting and browser checks remain available locally. No additional GitHub workflow permissions are required. Formatting is not run inside the cloud build because Vercel reserializes its own configuration files before executing the build command.
 - Local credentials, environment files, dependencies, generated builds, screenshots/PDFs, and test output are excluded from Git and deployment uploads.
+- Production verification: homepage returned HTTP 200; the browser decoded the Subscription App sample to 11 findings and a 90/100 score, displayed source highlights, and fetched a public Python privacy notice with a clear missing-Terms warning. The live API rejected a loopback URL with HTTP 400 / `BLOCKED_URL`. No browser runtime errors were observed.
 
 ## Run locally
 
@@ -33,7 +36,7 @@ npm run build
 npm run preview
 ```
 
-Vite alone and `npm run preview` **do not run serverless functions**. Paste mode works there, but URL mode displays a friendly server-unavailable message. Use Vercel dev for end-to-end URL development. Deployment needs the Vercel function as well as the static `dist/` frontend; do not deploy only the static files if you need URL mode. This implementation has not been publicly deployed.
+Vite alone and `npm run preview` **do not run serverless functions**. Paste mode works there, but URL mode displays a friendly server-unavailable message. Use Vercel dev for end-to-end URL development. Deployment needs the Vercel function as well as the static `dist/` frontend; do not deploy only the static files if you need URL mode. The public Vercel deployment above includes both the frontend and the policy-fetch function.
 
 This Designer workstation has a cached Node installation at `$HOME/.cache/designer-node-v24/bin`. If `node` is not on your shell's PATH, prepend that directory before running the commands above.
 
