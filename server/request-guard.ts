@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { VercelRequest } from '@vercel/node';
-import { PolicyError } from './policy-fetcher';
+import { PolicyError } from './policy-fetcher.js';
 
 // No database or API keys. This bounded limiter is PER WARM FUNCTION INSTANCE,
 // not a global security boundary. Add Vercel Firewall rate limiting before a

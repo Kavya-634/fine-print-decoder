@@ -1,6 +1,12 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": { "types": ["node"], "allowJs": false, "checkJs": false },
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+    "allowJs": false,
+    "checkJs": false
+  },
   "include": ["api/**/*.ts", "server/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

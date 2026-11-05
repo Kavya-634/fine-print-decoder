@@ -1,8 +1,9 @@
 // Opt-in URL fetching only. Paste mode never calls this endpoint.
 // All network I/O passes URL/DNS validation and a DNS-pinned transport.
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { fetchPolicies, PolicyError } from '../server/policy-fetcher';
-import { clientAddress, RequestGuard, validateRequest } from '../server/request-guard';
+// Explicit emitted-file extensions are required by the deployed Node ESM loader.
+import { fetchPolicies, PolicyError } from '../server/policy-fetcher.js';
+import { clientAddress, RequestGuard, validateRequest } from '../server/request-guard.js';
 
 const guard = new RequestGuard();
 
