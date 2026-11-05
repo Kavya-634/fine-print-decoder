@@ -7,7 +7,7 @@ A clean, responsive website that helps people understand potential risks in Term
 - Source repository: [Kavya-634/fine-print-decoder](https://github.com/Kavya-634/fine-print-decoder).
 - Vercel project: `fine-print-decoder` in the `kav-5611` scope, using the repository root as the project root.
 - The production Vercel Firewall includes a published rule for `POST /api/fetch-policy`: five requests per IP per 60-second fixed window. This supplements, rather than replaces, the per-instance application limits below.
-- Vercel's build command validates unit/server tests, production build/type checks, and formatting before deployment. Browser tests remain available locally. No additional GitHub workflow permissions are required.
+- Vercel's build command validates unit/server tests and production build/type checks before deployment. Formatting and browser checks remain available locally. No additional GitHub workflow permissions are required. Formatting is not run inside the cloud build because Vercel reserializes its own configuration files before executing the build command.
 - Local credentials, environment files, dependencies, generated builds, screenshots/PDFs, and test output are excluded from Git and deployment uploads.
 
 ## Run locally
