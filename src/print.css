@@ -1,0 +1,88 @@
+/* A dedicated, fully expanded report: printing never omits collapsed or filtered
+   findings and never prints editable text alongside a stale analysis. */
+.print-report {
+  display: none;
+}
+@media print {
+  @page {
+    size: auto;
+    margin: 17mm 16mm;
+  }
+  html,
+  body {
+    background: white !important;
+    color: #171717 !important;
+  }
+  body > * {
+    display: none !important;
+  }
+  body > #app {
+    display: block !important;
+  }
+  #app > * {
+    display: none !important;
+  }
+  #app > .print-report {
+    display: block !important;
+    font:
+      10pt/1.55 -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+  }
+  .print-report h1 {
+    font-size: 24pt;
+    margin: 0 0 4mm;
+    letter-spacing: -0.5pt;
+  }
+  .print-report h2 {
+    font-size: 14pt;
+    margin: 6mm 0 2mm;
+    break-after: avoid;
+  }
+  .print-report h3 {
+    font-size: 11pt;
+    margin: 0 0 2mm;
+    break-after: avoid;
+  }
+  .print-report p,
+  .print-report li {
+    margin: 1.5mm 0;
+    line-height: 1.6;
+  }
+  .print-report ul {
+    padding-left: 6mm;
+  }
+  .print-report .print-disclaimer {
+    border: 0.4mm solid #555;
+    padding: 3mm;
+  }
+  .print-report .print-finding {
+    border-top: 0.25mm solid #bbb;
+    padding: 4mm 0;
+    break-inside: avoid;
+  }
+  .print-report blockquote {
+    white-space: pre-wrap;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    max-height: none;
+    padding: 2mm 3mm;
+    margin: 2mm 0;
+    border-left: 0.8mm solid #666;
+    border-radius: 0;
+    font-size: 10pt;
+    color: #222;
+    background: none;
+  }
+  .print-report footer {
+    margin-top: 5mm;
+    border-top: 0.25mm solid #bbb;
+    padding-top: 3mm;
+    font-size: 9pt;
+  }
+  .print-report {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

@@ -1,0 +1,11 @@
+# Runtime source and package lock ship; local output and test artifacts do not.
+.git/
+.github/
+node_modules/
+dist/
+artifacts/
+test-results/
+playwright-report/
+.env
+.env.*
+*.log
